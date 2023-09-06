@@ -19,11 +19,9 @@
 
         /* Owl container styles */
         .owl-container {
-            background: url('images/open-eye.png') no-repeat center;
-            background-size: contain;
-            width: 200px;
-            height: 200px;
-            margin-bottom: 20px;
+            width: 190px;
+            height: 190px;
+            margin-bottom: 0px;
             position: relative;
         }
 
@@ -32,7 +30,7 @@
             position: absolute;
             width: 100%;
             height: 100%;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.6s ease;
         }
 
         /* Initially, both open and closed eye owls are shown */
@@ -42,6 +40,7 @@
 
         #owl-closed {
             opacity: 0;
+            pointer-events: none; /* Prevent interaction with the hidden open eye owl */
         }
 
         /* When the password input is focused, hide the open eye owl and show the closed eye owl */
@@ -55,13 +54,13 @@
 
         /* Login container styles */
         .login-container {
-            background-color: #fff;
+            background-color: #aea8a8;
             border-radius: 10px;
             box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
             padding: 20px;
             text-align: center;
-            animation: fadeIn 1s ease;
-            margin-top: 20px; /* Adjust the margin-top */
+            animation: fadeIn 1s ease-in;
+            margin-top: 0px; /* Adjust the margin-top */
         }
 
         @keyframes fadeIn {
@@ -114,7 +113,7 @@
             border-radius: 5px;
             font-size: 16px;
             cursor: pointer;
-            transition: background-color 0.3s, transform 0.3s; /* Added transform transition */
+            transition: background-color 0.3s, transform 0.3s ease-in-out; /* Added ease-in-out to the transform */
             position: relative; /* Added for button movement */
             left: 0; /* Initial position */
         }
@@ -123,11 +122,13 @@
         button[type="submit"].move-left {
             background-color: #0056b3;
             transform: translateX(-200px); /* Move the button left by 200px on hover */
+            transition-delay: 0.2s; /* Delay the transition */
         }
 
         button[type="submit"].move-right {
             background-color: #0056b3;
             transform: translateX(200px); /* Move the button right by 200px on hover */
+            transition-delay: 0.2s; /* Delay the transition */
         }
 
         /* Reset button position when the cursor leaves the button */
@@ -138,17 +139,11 @@
     <script>
         // JavaScript to handle image change on password input focus
         document.addEventListener('DOMContentLoaded', function () {
-            const usernameInput = document.getElementById('login-username');
             const passwordInput = document.getElementById('login-password');
             const loginButton = document.querySelector('button[type="submit"]');
             const owlOpen = document.getElementById('owl-open');
             const owlClosed = document.getElementById('owl-closed');
             let credentialsEntered = false; // Track if credentials are entered
-
-            // Function to check if both username and password are entered
-            function areCredentialsEntered() {
-                return usernameInput.value.trim() !== '' && passwordInput.value.trim() !== '';
-            }
 
             // When the password input is focused, hide the open eye owl and show the closed eye owl
             passwordInput.addEventListener('focus', function () {
@@ -164,7 +159,7 @@
 
             // Add a mouseenter event listener to the login button
             loginButton.addEventListener('mouseenter', function (event) {
-                if (!credentialsEntered && !areCredentialsEntered()) {
+                if (!credentialsEntered) {
                     // Determine the cursor direction and move the button accordingly
                     const buttonRect = loginButton.getBoundingClientRect();
                     const cursorX = event.clientX - buttonRect.left;
@@ -178,7 +173,7 @@
 
             // Add a mouseleave event listener to reset the button's position
             loginButton.addEventListener('mouseleave', function () {
-                if (!credentialsEntered && !areCredentialsEntered()) {
+                if (!credentialsEntered) {
                     // Reset the button position if credentials are not entered
                     loginButton.classList.remove('move-left', 'move-right');
                 }
@@ -186,7 +181,7 @@
 
             // Add a click event listener to simulate credentials being entered
             loginButton.addEventListener('click', function (event) {
-                if (!credentialsEntered && areCredentialsEntered()) {
+                if (!credentialsEntered) {
                     event.preventDefault(); // Prevent form submission (replace this with your actual form submission logic)
                     credentialsEntered = true; // Set the flag to indicate credentials are entered
                     loginButton.classList.remove('move-left', 'move-right'); // Reset the button position
@@ -198,7 +193,7 @@
 </head>
 <body>
     <!-- Owl container at the top -->
-    <div class="owl-container">
+    <div class="owl-container" style="margin-block-end: 0px;"> 
         <img src="images/open-eye.png" alt="Owl with Open Eyes" id="owl-open" class="owl-image">
         <img src="images/closed-eye.png" alt="Owl with Closed Eyes" id="owl-closed" class="owl-image">
     </div>
