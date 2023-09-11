@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head> 
+    <title>Tetris Game</title>
+    <link rel="stylesheet" href="./style.css">
+</head>
+<body>
+    <Header>Tetrix game</Header>
+    
+    <span id="homeButton" style="cursor: pointer; margin-left: 10px; margin-right: 10px; display: inline-block; padding: 10px 20px; background-color: #ffef94;">Home</span>
+    <span id="gamesbutton" style="cursor: pointer; display: inline-block; padding: 10px 20px; background-color: #94ffb6;">Games</span>
+
+    <script>
+        // Handle Home button click
+        const homeButton = document.getElementById("homeButton");
+        homeButton.addEventListener("click", () => {
+            // Redirect to the index.html page
+            window.location.href = "index.html"; // Change the URL as needed
+        });
+
+         // Handle game button click
+         const gamesbutton = document.getElementById("gamesbutton");
+        gamesbutton.addEventListener("click", () => {
+            // Redirect to the index.html page
+            window.location.href = "games.html"; // Change the URL as needed
+        });
+    </script>
+
+    <div style = "text-align:center;">
+    
+
+        <h2>Score: 0</h2>
+
+        <canvas id="tetris" width="300" height="600"> </canvas>
+    </div>   
+
+
+
+
+</body>
+<script src="./script.js"></script>
+<footer>&copy; 2023 Prabin Uprety | All rights reserved.</footer>
+
+</html>

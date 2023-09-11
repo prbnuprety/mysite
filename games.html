@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Games List</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #f0f0f0;
+        }
+
+        header {
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+            font-size: 24px;
+            font-weight: bold;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: auto;
+            padding: 20px;
+        }
+
+        .game-tile {
+            border: 2px solid #ccc;
+            border-radius: 10px;
+            padding: 10px;
+            margin: 20px;
+            text-align: center;
+            background-color: #fff;
+            cursor: pointer;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .game-image {
+            max-width: 100%;
+            max-height: 100%;
+            width: 600;
+            height: 200;
+        }
+
+        footer {
+            background-color: #222;
+            color: #fff;
+            text-align: center;
+            padding: 10px;
+        }
+    </style>
+</head>
+<body>
+    <header>Games List</header>
+    <div class="container">
+        <div class="game-tile" onclick="redirectToGame('snake.html')">
+           
+            <img class="game-image" src="images/snakegame.jpeg" alt="Snake Game Image">
+            
+        </div>
+            
+        <div class="game-tile" onclick="redirectToGame('tetris.html')">
+            
+            
+            <img class="game-image" src="images/tertisgame.png" alt="Tetris Game Image">
+        </div>
+        <!-- Add more game tiles as needed -->
+    </div>
+    <footer>&copy; 2023 Prabin Uprety</footer>
+
+    <script>
+        function redirectToGame(gameUrl) {
+            window.location.href = gameUrl;
+        }
+    </script>
+</body>
+</html>
